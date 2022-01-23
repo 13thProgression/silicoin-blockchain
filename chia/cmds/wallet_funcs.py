@@ -165,7 +165,7 @@ async def send_from(args: dict, wallet_client: WalletRpcClient, fingerprint: int
     coin_records = None
     try:
         config = load_config(DEFAULT_ROOT_PATH, "config.yaml")
-        self_hostname = config["self_hostname"]
+        self_hostname = config["wallet"]["full_node_peer"]["host"]
         if rpc_port is None:
             rpc_port = config["full_node"]["rpc_port"]
         client = await FullNodeRpcClient.create(self_hostname, uint16(rpc_port), DEFAULT_ROOT_PATH, config)
